@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Pharmacist Management System</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Pharmacist Management System</h1>
+    <hr>
+    <h2>Update Pharmacist</h2>
+
+    <form action="#" th:action="@{/savePharmacist}" th:object="${pharmacist}"
+          method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}"/>
+
+        <input type="text" th:field="*{firstName}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{lastName}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{role}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{emailID}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{mobileNo}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{address}" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Update Pharmacist</button>
+    </form>
+
+    <hr>
+
+    <a th:href="@{/pharmacist}"> Back to Pharmacist List</a>
+</div>
+</body>
+</html>

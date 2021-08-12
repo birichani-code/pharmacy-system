@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Medicine</title>
+	<link rel="stylesheet" href="pic.css">
+</head>
+<body>
+<div align="center" >
+	<div style="background-image: url('/images/phar5.jprg');">
+
+	<h1>Medicine Manager</h1>
+
+	<a href="new">Create New Medicine</a>
+
+	<br/><br/>
+	<form th:action="@{/medicine}">
+		Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required/>
+		&nbsp;
+		<input type="submit" value="Search"/>
+		&nbsp;
+		<input type="button" value="Clear" id="btnClear" onclick="clearSearch()"/>
+	</form>
+	<br/><br/>
+
+	<table border="3" cellpadding="20">
+		<thead>
+		<tr>
+			<th>Medicine ID</th>
+			<th>Name</th>
+			<th>Category</th>
+			<th>Company</th>
+			<th>Price</th>
+
+			<th>Actions</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="medicine : ${listMedicines}">
+			<td th:text="${medicine.id}">Medicine ID</td>
+			<td th:text="${medicine.name}">Name</td>
+			<td th:text="${medicine.category}">Category</td>
+			<td th:text="${medicine.company}">Company</td>
+			<td th:text="${medicine.price}">Price</td>
+			<td>
+				<a th:href="@{'/edit/' + ${medicine.id}}">Edit</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<a th:href="@{'/delete/' + ${medicine.id}}">Delete</a>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<script type="text/javascript">
+	function clearSearch() {
+		window.location = "[[@{/}]]";
+	}
+
+</script>
+</div>
+</body>
+</html>
+<input type="button" value="Go Back home!" onclick="history.back(-1)" style="position:left"/>
